@@ -1,9 +1,8 @@
 <!--
 title: Serverless Framework - AWS Lambda Events - CloudFront
-menuText: CloudFront
-menuOrder: 16
-description:  Setting up CloudFront with AWS Lambda@Edge via the Serverless Framework
-layout: Doc
+short_title: CloudFront
+description: Setting up CloudFront with AWS Lambda@Edge via the Serverless Framework
+keywords: ['Serverless Framework', 'AWS Lambda', 'CloudFront', 'Lambda@Edge']
 -->
 
 <!-- DOCS-SITE-LINK:START automatically generated  -->
@@ -57,16 +56,18 @@ Example handler function that returns timestamp in the response headers. More ex
 
 ```javascript
 // index.handler
-'use strict';
+'use strict'
 
 module.exports.handler = (event, context, callback) => {
-  const response = event.Records[0].cf.response;
-  const headers = response.headers;
+  const response = event.Records[0].cf.response
+  const headers = response.headers
 
-  headers['x-serverless-time'] = [{ key: 'x-serverless-time', value: Date.now().toString() }];
+  headers['x-serverless-time'] = [
+    { key: 'x-serverless-time', value: Date.now().toString() },
+  ]
 
-  return callback(null, response);
-};
+  return callback(null, response)
+}
 ```
 
 For more specific setup, origin can be a object, which uses CloudFormation yaml syntax.

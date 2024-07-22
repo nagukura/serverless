@@ -1,9 +1,9 @@
 <!--
 title: Serverless Framework - Plugins - Extending and overriding the configuration
-menuText: Extending and overriding configuration
-menuOrder: 6
 description: How to extend and override configuration via a plugin
-layout: Doc
+short_title: Extending configuration
+keywords:
+  ['Serverless Framework', 'Plugins', 'Configuration', 'Extend', 'Override']
 -->
 
 <!-- DOCS-SITE-LINK:START automatically generated  -->
@@ -35,16 +35,16 @@ You can use it in plugin constructor, or if for some reason configuration extens
 ```js
 class MyPlugin {
   constructor(serverless) {
-    this.serverless = serverless;
+    this.serverless = serverless
 
     const value = {
       myKey: 'myValue',
-    };
-    this.serverless.extendConfiguration(['custom', 'myPlugin'], value);
+    }
+    this.serverless.extendConfiguration(['custom', 'myPlugin'], value)
   }
 }
 
-module.exports = MyPlugin;
+module.exports = MyPlugin
 ```
 
 If your plugin needs merging you need to take care of it yourself.
@@ -52,15 +52,15 @@ If your plugin needs merging you need to take care of it yourself.
 ```js
 class MyPlugin {
   constructor(serverless) {
-    this.serverless = serverless;
+    this.serverless = serverless
 
-    const currentConfig = this.serverless.configurationInput.custom.myPlugin;
+    const currentConfig = this.serverless.configurationInput.custom.myPlugin
     const value = Object.assign(currentConfig, {
       myKey: 'myValue',
-    });
-    this.serverless.extendConfiguration(['custom', 'myPlugin'], value);
+    })
+    this.serverless.extendConfiguration(['custom', 'myPlugin'], value)
   }
 }
 
-module.exports = MyPlugin;
+module.exports = MyPlugin
 ```
